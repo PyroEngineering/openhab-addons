@@ -186,3 +186,22 @@ Thing http:url:foo "Foo" [
          Type string : text "Text" [ stateTransformation="JSONPATH:$.metadata.data" ]
 }
 ```
+### `http.things`
+
+```java
+Thing http:url:askoheat "HTTP Askoheat" [
+    baseURL="http://192.168.192.92/",
+    authMode="BASIC",
+    ignoreSSLErrors=false,
+    refresh=10,
+    timeout=3000,
+    bufferSize=2048,
+    delay=0,
+    stateMethod="GET",
+    commandMethod="GET"] {
+        Channels:
+         Type number : wassertemp "Wassertemperatur" [
+             stateExtension="getval.json",
+             stateTransformation="JSONPATH:$.MODBUS_VAL_TEMPERATURE_SENSOR0"]
+}
+```
